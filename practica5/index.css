@@ -1,0 +1,9 @@
+#prueba{
+    background-color: grey;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
