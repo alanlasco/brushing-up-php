@@ -1,0 +1,123 @@
+CURSO INTRODUCTORIO AL DESARROLLO WEB – MODULO II 
+
+
+Practica 4 
+
+Para realizar esta actividad primero deben de tener 
+en su plataforma phpMyAdmin los ejemplos de Bases de 
+datos. Para ello: 
+
+1.Descargar los archivos Libreria.sql.zip y 
+Ejemplos.sql.zip que se hayan en la sección de 
+recursos del curso 
+
+
+2.Desde phpMyAdmin, ir a la pestaña ‘Importar’ y 
+seleccionar los archivos. 
+
+
+Los ejercicios deben ser copiados en esta hoja. Una 
+vez completados todos, enviar este mismo archivo. 
+
+Complete con el codigo SQL necesario para realizar lo 
+que pide cada inciso (el primero es un ejemplo de como 
+contestar): 
+
+a)Crear una Base de datos con el nombre BD_ejemplo 
+
+CREATE 
+DATABASE BD_ejemplo; 
+
+b)Crear una tabla llamada ‘Tabla1’ con tres columnas: 
+
+• 
+‘nombre’ que es un VARCHAR de 120 caracteres 
+• 
+‘email’ que es un VARCHAR de 150 caracteres 
+• 
+‘n_alumno’ que es un INT de 6 caracteres
+
+
+
+CREATE TABLE tabla1 (
+n_alumno int(6), 
+nombre varchar(120),
+email varchar(150)
+     
+);
+
+
+ 
+c)Insertar un registro de ejemplo en la tabla realizada 
+en el inciso b)
+
+
+
+
+INSERT into tabla1 (n_alumno,nombre,email)
+values (NULL,'Alan','alannnxavier@gmail.com'); 
+
+
+
+
+d)Seleccionar, de la tabla Exportaciones (esta dentro 
+de la base de datos ‘Ejemplos’), todos los registros 
+que posean un valor de toneladas menor a 2500. 
+Mostrar todas las columnas. 
+
+
+
+
+SELECT * FROM exportaciones WHERE toneladas < 2500;
+
+
+
+
+
+e)Seleccionar de la tabla Exportaciones, los registros 
+de transacciones realizadas a Alemania Y que sean 
+valuadas entre 1000 y 1500 dolares. Se muestran las 
+columnas de producto, toneladas y dolares.
+
+
+
+
+SELECT producto, toneladas, dolares FROM exportaciones WHERE (dolares BETWEEN 1000 AND 1500)AND(pais_dest = 'Alemania'); 
+
+
+
+
+f)Seleccionar de la tabla Libros, todos los registros 
+que posean la silaba ‘an’ en sus nombres. Se muestran 
+las columnas nom_libro y autor_libro. (OPCIONAL: 
+combinar con la tabla Autores, para que aparezca la 
+columna nom_autor en vez de autor_libro, es decir, 
+aparezcan los nombres y no los códigos de los 
+autores). 
+
+
+
+
+SELECT libros.nom_libro, autores.nom_autor FROM libros
+INNER JOIN autores ON libros.autor_libro = autores.id_autor WHERE nom_libro LIKE '%an%' 
+
+
+
+g)Sumar el valor de todos los libros (no tener en 
+cuenta el stock, es decir, solo sumar los valores 
+netos) que fueron fabricados antes del 2013. 
+
+
+
+SELECT SUM(precio) FROM libros WHERE ano_libro= 2013;
+
+
+
+h)Borrar de la tabla Editoriales, todas aquellas que 
+posean la palabra ‘Editorial’ en sus nombre. 
+
+
+
+DELETE FROM editoriales WHERE nom_editorial LIKE '%Editorial%';
+
+
